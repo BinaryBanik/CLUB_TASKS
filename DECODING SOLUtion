@@ -1,0 +1,34 @@
+The decoded text was-
+CSI{IS_FUN}
+
+How did i decode-
+
+The file had tabs and spaces only, therefore it was probably encoded with a binary whitespace encoding scheme so to decode it, I did the following-
+
+I assumed that tabs and spaces are binary values (1 and 0)
+
+There can be two possible mappings-
+1) Space = 0, Tab = 1
+2) Space = 1, Tab = 0
+
+When i tried (Space = 0, Tab = 1) i got garbage output
+
+When i tried (Space = 1, Tab = 0), this translated the bits into ascii strings
+
+I split the binary output into groups of 8 bits: 01000011 01010011 01001001 01111011 01001001 01010011 01011111 01000110 01010101 01001110 01111101
+
+Each of these 8bit blocks is a character-
+
+01000011 - C
+01010011 - S
+01001001 - I
+01111011 - {
+01001001 - I
+01010011 - S
+01011111 - _
+01000110 - F
+01010101 - U
+01001110 - N
+01111101 - }
+
+So combining characters, the message is CSI{IS_FUN}
